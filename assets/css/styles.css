@@ -1,13 +1,15 @@
 body {
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #f0f0f0;
+  background: linear-gradient(to right, #f8f9fa, #e9ecef);
 }
 
 canvas {
-  border: 2px solid #333;
-  background-color: #fff;
+  background: #f5f5dc;
+  border: 3px solid #333;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.card {
+  border-radius: 20px;
 }

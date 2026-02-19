@@ -1,14 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Juego 2D - Cucaracha</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-<body>
-  <canvas id="canvas"></canvas>
 
-  <!-- Vinculamos el archivo JS externo -->
-  <script src="assets/js/main.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Taco Defense 🪳🌮</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="bg-dark text-white text-center p-4 shadow">
+        <div class="container">
+            <h1 class="display-4">Taco Defense</h1>
+            <img src="assets/logo.png" alt="Logo Juego" class="img-fluid mt-2" width="120">
+            <p class="lead">Protege el taco de las cucarachas 🪳</p>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="container my-4 text-center">
+
+        <!-- Pantalla inicial -->
+        <div id="pantallaInicio" class="card p-4 shadow-lg">
+            <h3>¿Cómo jugar?</h3>
+            <p>
+                Las cucarachas intentarán llegar al taco.<br>
+                Pasa el mouse sobre ellas para resaltarlas.<br>
+                Haz clic izquierdo para eliminarlas.<br>
+                Tienes 3 vidas. ¡Sobrevive el mayor tiempo posible!
+            </p>
+            <button id="btnStart" class="btn btn-danger btn-lg">Empezar Juego</button>
+        </div>
+
+        <!-- Panel de estadísticas -->
+        <div id="panelInfo" class="row my-3 d-none">
+            <div class="col-md-3">❤️ Vidas: <span id="vidas">3</span></div>
+            <div class="col-md-3">⏱ Tiempo: <span id="tiempo">0</span>s</div>
+            <div class="col-md-3">🏆 Récord: <span id="record">0</span>s</div>
+            <div class="col-md-3">🪳 Eliminadas: <span id="kills">0</span></div>
+        </div>
+
+        <!-- Canvas -->
+        <canvas id="canvas"></canvas>
+
+        <!-- Game Over -->
+        <div id="gameOver" class="alert alert-danger mt-3 d-none">
+            <h3>¡Juego Terminado!</h3>
+            <button onclick="location.reload()" class="btn btn-dark">Reiniciar</button>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white text-center p-3 mt-4">
+        Creado por Juan Fer © 2026
+    </footer>
+
+    <script src="assets/js/main.js"></script>
 </body>
+
 </html>
