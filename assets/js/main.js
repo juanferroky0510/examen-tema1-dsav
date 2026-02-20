@@ -32,7 +32,6 @@ let kills = 0;
 
 let cucarachas = [];
 let maxCucarachas = 60;
-//let grupoActual = 2;
 let velocidadBase = 0.5;
 
 
@@ -137,7 +136,7 @@ class Mesa {
     }
 }
 
-// Clase Taco (sin plato)
+// Clase Taco
 class Taco {
     constructor(x, y, scale = 1) {
         this.x = x;
@@ -175,7 +174,6 @@ const taco = new Taco(canvas.width / 2, canvas.height - 50, 1);
 class Cuca extends Cucaracha {
     constructor(x, y, scale) {
         super(x, y, scale);
-        //this.radius = 40 * scale;
         this.bodyRadius = 40 * scale;
         this.headRadius = 25 * scale;
 
@@ -184,8 +182,6 @@ class Cuca extends Cucaracha {
         this.muerta = false;
         this.alpha = 1;
 
-        /* this.aplastada = false;
-        this.animTiempo = 0; */
         this.aplastada = false;
         this.animFrame = 0;
 
@@ -277,7 +273,6 @@ function controlarGeneracion() {
         generarCucaracha();
     }
 
-    //velocidadBase = 0.6 + (cantidadObjetivo * 0.02);
     velocidadBase = 0.6 + (cantidadObjetivo * 0.025);
 }
 
@@ -362,16 +357,11 @@ canvas.addEventListener("click", e => {
         let dy = my - c.y;
         let dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 40) {
-            //c.muerta = true;
-            //c.aplastada = true;
             if (!c.aplastada) {
                 c.aplastada = true;
                 sonidoAplastar.currentTime = 0;
-                /* sonidoAplastar.play(); */
                 const sonidoClone = sonidoAplastar.cloneNode();
                 sonidoClone.play();
-
-
             }
 
 
@@ -388,11 +378,6 @@ function actualizar() {
     taco.draw(ctx);
 
     controlarGeneracion();
-
-    /* cucarachas.forEach(c=>{
-      c.update();
-      c.draw(ctx);
-    }); */
     cucarachas.forEach(c => c.update());
 
     // 🔥 Detectar colisiones después de moverlas
