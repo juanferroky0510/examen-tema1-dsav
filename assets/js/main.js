@@ -394,6 +394,7 @@ function iniciarJuego() {
     musicaFondo.play();
     document.getElementById("pantallaInicio").classList.add("d-none");
     document.getElementById("panelInfo").classList.remove("d-none");
+    document.getElementById("btnSalirContainer").classList.remove("d-none");
 
     actualizar();
 
@@ -405,41 +406,47 @@ function iniciarJuego() {
     }, 1000);
 }
 
-function terminarJuego(){
+function terminarJuego() {
+    document.getElementById("btnSalirContainer").classList.add("d-none");
 
-  juegoActivo = false;
+    juegoActivo = false;
 
-  musicaFondo.pause();
-  musicaFondo.currentTime = 0;
+    musicaFondo.pause();
+    musicaFondo.currentTime = 0;
 
-  const mensaje = document.getElementById("mensajeFinal");
-  const contenedor = document.getElementById("gameOver");
+    const mensaje = document.getElementById("mensajeFinal");
+    const contenedor = document.getElementById("gameOver");
 
-  let recordAnterior = Number(record);
+    let recordAnterior = Number(record);
 
-  if(tiempo > recordAnterior){
+    if (tiempo > recordAnterior) {
 
-    localStorage.setItem("recordTaco", tiempo);
-    record = tiempo;
+        localStorage.setItem("recordTaco", tiempo);
+        record = tiempo;
 
-    mensaje.textContent = "🏆 ¡NUEVO RÉCORD!";
-    contenedor.classList.remove("alert-danger");
-    contenedor.classList.add("alert-success");
+        mensaje.textContent = "🏆 ¡NUEVO RÉCORD!";
+        contenedor.classList.remove("alert-danger");
+        contenedor.classList.add("alert-success");
 
-    sonidoGanar.play();
+        sonidoGanar.play();
 
-  } else {
+    } else {
 
-    mensaje.textContent = "💀 Juego Terminado";
-    contenedor.classList.remove("alert-success");
-    contenedor.classList.add("alert-danger");
+        mensaje.textContent = "💀 Juego Terminado";
+        contenedor.classList.remove("alert-success");
+        contenedor.classList.add("alert-danger");
 
-    sonidoPerder.play();
-  }
+        sonidoPerder.play();
+    }
 
-  contenedor.classList.remove("d-none");
+    contenedor.classList.remove("d-none");
 }
 
 
 
 document.getElementById("btnStart").addEventListener("click", iniciarJuego);
+document.getElementById("btnSalir").addEventListener("click", function(){
+    location.reload();
+});
+
+
