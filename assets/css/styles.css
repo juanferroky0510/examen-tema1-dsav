@@ -10,6 +10,7 @@ body{
     font-family: 'Trebuchet MS', sans-serif;
     display: flex;
     flex-direction: column;
+    cursor: url("../img/matainsectos.png") 16 16, auto;
 }
 
 /* Hace que el contenido empuje el footer */
