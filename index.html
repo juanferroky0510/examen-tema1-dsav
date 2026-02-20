@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Taco Defense 🪳🌮</title>
+    <title>El Último Taco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 
     <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
@@ -16,27 +16,53 @@
 <body>
 
     <!-- HEADER -->
-    <header class="bg-dark text-white text-center p-4 shadow">
+    <header class="text-center p-4 shadow encabezado-cocina">
         <div class="container">
-            <h2 class="display-4">Taco Defense</h2>
-            <p class="lead">Protege el taco de las cucarachas 🪳</p>
+            <h1 class="display-3 titulo-juego">🌮 El Último Taco 🌮</h1>
+            <p class="lead">Defiende tu taco… o las cucarachas se lo comerán 🪳🌮</p>
         </div>
     </header>
 
+
     <!-- MAIN -->
-    <main class="container my-4 text-center">
+    <main class="container text-center pt-2">
 
         <!-- Pantalla inicial -->
-        <div id="pantallaInicio" class="card p-4 shadow-lg">
-            <h3>¿Cómo jugar?</h3>
+        <div id="pantallaInicio" class="card p-4 shadow-lg tarjeta-cocina">
+
+            <h3>📖 La Historia</h3>
             <p>
-                Las cucarachas intentarán llegar al taco.<br>
-                Pasa el mouse sobre ellas para resaltarlas.<br>
-                Haz clic izquierdo para eliminarlas.<br>
-                Tienes 3 vidas. ¡Sobrevive el mayor tiempo posible!
+                Solo queda un taco en la mesa.
+                El último. El más perfecto. El más delicioso.
+                Has esperado todo el día para comértelo.
             </p>
-            <button id="btnStart" class="btn btn-danger btn-lg">Empezar Juego</button>
+
+            <p>
+                Pero algo se mueve en la cocina…
+                Las cucarachas han salido de las sombras.
+                Ellas también quieren el taco.
+            </p>
+
+            <p>
+                ⚔️ No puedes permitirlo.
+                Defenderás tu taco hasta el final.
+            </p>
+
+            <hr>
+
+            <h3>🎮 ¿Cómo jugar?</h3>
+            <p>
+                🖱 Haz clic en las cucarachas para aplastarlas.<br>
+                ⏱ Sobrevive el mayor tiempo posible.<br>
+                ❤️ Tienes 3 vidas.<br>
+                ❌ Si las cucarachas llegan al taco… pierdes.
+            </p>
+
+            <button id="btnStart" class="btn btn-jugar btn-lg">
+                🔥 Defender el Taco
+            </button>
         </div>
+
 
         <!-- Panel de estadísticas -->
         <div id="panelInfo" class="row my-3 d-none">
@@ -54,12 +80,12 @@
             <h3 id="mensajeFinal"></h3>
             <button onclick="location.reload()" class="btn btn-dark">Reiniciar</button>
         </div>
-        
+
 
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-dark text-white text-center p-3 mt-4">
+    <footer class="footer-cocina text-white text-center p-3">
         Instituto Tecnológico de Pachuca - Juan Fernando Ortega Olvera - ITIC´s
     </footer>
 

@@ -1,3 +1,7 @@
+const fondoImagen = new Image();
+fondoImagen.src = "assets/img/fondoCanvas.png";
+
+
 // 🔊 AUDIO
 const musicaFondo = new Audio("assets/audios/musica-fondo.mp3");
 musicaFondo.loop = true;
@@ -377,6 +381,8 @@ canvas.addEventListener("click", e => {
 
 function actualizar() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(fondoImagen, 0, 0, canvas.width, canvas.height);
+
 
     mesa.draw(ctx);
     taco.draw(ctx);
