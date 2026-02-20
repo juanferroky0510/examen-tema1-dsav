@@ -1,3 +1,20 @@
+// 🔊 AUDIO
+const musicaFondo = new Audio("assets/audios/musica-fondo.mp3");
+musicaFondo.loop = true;
+musicaFondo.volume = 0.4;
+
+const sonidoAplastar = new Audio("assets/audios/aplastar.mp3");
+sonidoAplastar.volume = 0.7;
+
+const sonidoGanar = new Audio("assets/audios/ganar.mp3");
+sonidoGanar.volume = 0.8;
+
+const sonidoPerder = new Audio("assets/audios/perder.mp3");
+sonidoPerder.volume = 0.8;
+
+const sonidoComer = new Audio("assets/audios/comer.mp3");
+sonidoComer.volume = 0.8;
+
 const canvas = document.getElementById("canvas");
 canvas.width = window.innerWidth * 0.4;
 canvas.height = window.innerHeight * 0.7;
@@ -194,6 +211,8 @@ class Cuca extends Cucaracha {
 
         if (this.y + 40 > mesa.y) {
             vidas--;
+            const sonidoClone = sonidoComer.cloneNode();
+            sonidoClone.play();
             document.getElementById("vidas").textContent = vidas;
             cucarachas.splice(cucarachas.indexOf(this), 1);
             if (vidas <= 0) terminarJuego();
@@ -343,6 +362,12 @@ canvas.addEventListener("click", e => {
             //c.aplastada = true;
             if (!c.aplastada) {
                 c.aplastada = true;
+                sonidoAplastar.currentTime = 0;
+                /* sonidoAplastar.play(); */
+                const sonidoClone = sonidoAplastar.cloneNode();
+                sonidoClone.play();
+
+
             }
 
 
@@ -375,6 +400,7 @@ function actualizar() {
 
 function iniciarJuego() {
     juegoActivo = true;
+    musicaFondo.play();
     document.getElementById("pantallaInicio").classList.add("d-none");
     document.getElementById("panelInfo").classList.remove("d-none");
 
@@ -388,12 +414,41 @@ function iniciarJuego() {
     }, 1000);
 }
 
-function terminarJuego() {
-    juegoActivo = false;
-    if (tiempo > record) {
-        localStorage.setItem("recordTaco", tiempo);
-    }
-    document.getElementById("gameOver").classList.remove("d-none");
+function terminarJuego(){
+
+  juegoActivo = false;
+
+  musicaFondo.pause();
+  musicaFondo.currentTime = 0;
+
+  const mensaje = document.getElementById("mensajeFinal");
+  const contenedor = document.getElementById("gameOver");
+
+  let recordAnterior = Number(record);
+
+  if(tiempo > recordAnterior){
+
+    localStorage.setItem("recordTaco", tiempo);
+    record = tiempo;
+
+    mensaje.textContent = "🏆 ¡NUEVO RÉCORD!";
+    contenedor.classList.remove("alert-danger");
+    contenedor.classList.add("alert-success");
+
+    sonidoGanar.play();
+
+  } else {
+
+    mensaje.textContent = "💀 Juego Terminado";
+    contenedor.classList.remove("alert-success");
+    contenedor.classList.add("alert-danger");
+
+    sonidoPerder.play();
+  }
+
+  contenedor.classList.remove("d-none");
 }
+
+
 
 document.getElementById("btnStart").addEventListener("click", iniciarJuego);
