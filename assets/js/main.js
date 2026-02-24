@@ -146,29 +146,53 @@ class Taco {
 
     draw(ctx) {
         ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.scale(this.scale, this.scale);
 
-        // Tortilla doblada (semicírculo amarillo)
-        ctx.fillStyle = "#FFD966";
+        // === SOMBRA ===
+        ctx.fillStyle = "rgba(0,0,0,0.2)";
         ctx.beginPath();
-        ctx.arc(this.x, this.y, 40 * this.scale, 0, Math.PI, false); // semicírculo inferior
+        ctx.ellipse(0, 15, 45, 10, 0, 0, Math.PI * 2);
         ctx.fill();
 
-        // Verdura (líneas verdes sobre la curva del semicírculo)
-        ctx.strokeStyle = "#4CAF50";
-        ctx.lineWidth = 3;
+        // === TORTILLA (base doblada) ===
+        ctx.fillStyle = "#F4C430";
+        ctx.beginPath();
+        ctx.arc(0, 0, 45, Math.PI, 0, false);
+        ctx.fill();
 
-        for (let i = -30; i <= 30; i += 10) {
+        // Borde tostado
+        ctx.strokeStyle = "#D4A017";
+        ctx.lineWidth = 4;
+        ctx.stroke();
+
+        // === CARNE ===
+        ctx.fillStyle = "#8B4513";
+        ctx.beginPath();
+        ctx.arc(0, -5, 30, Math.PI, 0, false);
+        ctx.fill();
+
+        // === LECHUGA ===
+        ctx.fillStyle = "#4CAF50";
+        for (let i = -25; i <= 25; i += 10) {
             ctx.beginPath();
-            ctx.moveTo(this.x + i * this.scale, this.y - 2 * this.scale);
-            ctx.lineTo(this.x + i * this.scale, this.y - 15 * this.scale);
-            ctx.stroke();
+            ctx.arc(i, -15, 6, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // === SALSA ROJA ===
+        ctx.fillStyle = "#D62828";
+        for (let i = -20; i <= 20; i += 15) {
+            ctx.beginPath();
+            ctx.arc(i, -5, 4, 0, Math.PI * 2);
+            ctx.fill();
         }
 
         ctx.restore();
     }
 }
 const mesa = new Mesa(0, canvas.height - 80, canvas.width, 150);
-const taco = new Taco(canvas.width / 2, canvas.height - 50, 1);
+const taco = new Taco(canvas.width / 2, canvas.height - 30, 1);
 
 
 class Cuca extends Cucaracha {
