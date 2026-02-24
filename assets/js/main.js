@@ -265,7 +265,7 @@ function generarCucaracha() {
 // 🔥 Control inteligente basado en tiempo
 function controlarGeneracion() {
     let cantidadObjetivo = Math.min(
-        3 + Math.floor(tiempo / 30) * 3,
+        4 + Math.floor(tiempo / 30) * 4,
         maxCucarachas
     );
 
